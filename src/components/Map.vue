@@ -26,23 +26,39 @@ export default {
         const sheetID =
             '2PACX-1vQZHOrhL8jW3t5R7Zr1lsZOg7WlOTvH8_F6kP5dCJn0oRsSwhLWAdM_odXCjFukhjZuPuZAH4Z4Ydy-';
         const points = await sheets2geojson(sheetID);
+        let selected;
         map.U.onLoad(() => {
             map.U.setFillColor('water', 'hsl(200,50%,90%)');
-            map.U.addGeoJSON('points', points);
+            map.U.addGeoJSON('points', points, { generateId: true });
             map.U.addCircle('points-circles', 'points', {
                 circleColor: [
                     'match',
                     ['get', 'Type'],
                     'Offer',
-                    'hsl(140,90%,30%)',
+                    'hsl(140,90%,40%)',
                     'Request',
                     'hsl(330,100%,40%)',
                     'hsl(0,0%,50%)',
                 ],
+                circleStrokeColor: [
+                    'match',
+                    ['get', 'Type'],
+                    'Offer',
+                    'hsl(140,90%,20%)',
+                    'Request',
+                    'hsl(330,100%,20%)',
+                    'hsl(0,0%,30%)',
+                ],
+                circleStrokeWidth: [
+                    'case',
+                    ['to-boolean', ['feature-state', 'selected']],
+                    4,
+                    1,
+                ],
                 circleRadius: {
                     stops: [
-                        [10, 3],
-                        [12, 10],
+                        [10, 6],
+                        [12, 14],
                     ],
                 },
             });
@@ -50,6 +66,11 @@ export default {
             map.on('click', 'points-circles', e => {
                 console.log(e);
                 window.app.FeatureInfo.feature = e.features[0];
+                if (selected) {
+                    map.setFeatureState(selected, { selected: false });
+                }
+                selected = { source: 'points', id: e.features[0].id };
+                map.setFeatureState(selected, { selected: true });
             });
             map.U.hoverPopup(
                 'points-circles',

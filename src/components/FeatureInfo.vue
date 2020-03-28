@@ -1,9 +1,12 @@
 <template lang="pug">
-div(v-if="p")
+div(v-if="p" :class="{[p.Type]: true}").ba.bw2.br4.b--light-gray.pa2.mb5
     img.image(v-if="imageUrl" :src="imageUrl")
     h1 {{ p.Type }}
     p {{ p.Description }}
     table
+        tr(v-if="p.Name")
+            th Name
+            td {{ p.Name }}
         tr(v-if="p.Date")
             th Date
             td {{ p.Date }}
@@ -52,5 +55,18 @@ export default {
 
 .image {
     width: 100%;
+}
+th {
+    text-align: right;
+    vertical-align: top;
+    padding: 5px;
+}
+
+.Request {
+    border-color: hsl(330, 100%, 40%);
+}
+
+.Offer {
+    border-color: hsl(140, 90%, 40%);
 }
 </style>
