@@ -1,14 +1,15 @@
 <template lang="pug">
     #app.flex.flex-column.vh-100.avenir
         //- #top.bb.b--gray.bg-washed-yellow
-        //-     h1 Community Map
+        //-     h1 Carte d’entraide & de soutien aux soignants Covid-19
         #middle.flex.flex-auto
             #sidebar.br.b--light-gray.overflow-auto.w3.w-25-ns.pa2
 
                 //- .b.i See the README for tips on customising.              
+                h3 Carte d’entraide & de soutien aux soignants Covid-19
+                CategoryFilter.mb4
                 FeatureInfo
-                h3 Medical equipment sharing map
-                p Add requests and offers in this <a href="https://docs.google.com/spreadsheets/d/1wdGYpuyu0ce8_L_JPdxTrjhgcxkOXjPX1G_Y529H9iU/edit#gid=0">Google Sheet</a>.
+                p Ajoute tes souhaits ou tes propositions d’aides via le formulaire en ligne <a href="https://framaforms.org/entraide-soutien-aux-soignants-covid-19-1585006214">ici</a>.
                     
             #map-container.relative.flex-auto
                 Map
@@ -19,6 +20,7 @@
 <script>
 import Map from './components/Map.vue';
 import FeatureInfo from './components/FeatureInfo.vue';
+import CategoryFilter from '@/components/CategoryFilter.vue';
 import { EventBus } from './EventBus';
 window.app = {};
 export default {
@@ -26,6 +28,7 @@ export default {
     components: {
         Map,
         FeatureInfo,
+        CategoryFilter,
     },
     created() {
         window.app.App = this;

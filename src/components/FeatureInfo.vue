@@ -1,13 +1,18 @@
 <template lang="pug">
 div(v-if="p" :class="{[p.Type]: true}").ba.bw2.br4.b--light-gray.pa2.mb5
     img.image(v-if="imageUrl" :src="imageUrl")
-    h1 {{ p.Type }}
+    h1.f3 {{ p.Identification }}
+    div
+        .dib.b.ba.br4.b--light-blue.pa2 {{ p.Categorie }}
     p {{ p.Description }}
     table
-        tr(v-if="p.Name")
-            th Name
-            td {{ p.Name }}
-        tr(v-if="p.Date")
+        tr(v-if="p.Conditions.trim()")
+            th Conditions
+            td {{ p.Conditions }}
+        tr.i(v-if="p.Commentaires.trim()")
+            th Commentaires
+            td {{ p.Commentaires }}
+        tr(v-if="p.Date.trim()")
             th Date
             td {{ p.Date }}
 
@@ -28,11 +33,15 @@ div(v-if="p" :class="{[p.Type]: true}").ba.bw2.br4.b--light-gray.pa2.mb5
 </template>
 
 <script>
+import { EventBus } from '../EventBus';
 export default {
     name: 'FeatureInfo',
     data: () => ({
         feature: undefined,
         ignoreProps: ['id', 'Longitude', 'Latitude', 'image_url'],
+        // fields: [
+        //     ['Identification'],
+        //     ['
     }),
     computed: {
         p() {
@@ -44,6 +53,7 @@ export default {
     },
     created() {
         window.app.FeatureInfo = this;
+        EventBus.$on('select-feature', feature => (this.feature = feature));
     },
 };
 </script>
