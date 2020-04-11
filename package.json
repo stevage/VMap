@@ -13,7 +13,7 @@
     "d3-fetch": "^1.1.2",
     "geojson-bounds": "^1.0.2",
     "mapbox-gl": "^1.6.1",
-    "mapbox-gl-utils": "^0.28.1",
+    "mapbox-gl-utils": "^0.30.0",
     "sheets2geojson": "^0.0.2",
     "vue": "^2.5.21"
   },

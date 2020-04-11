@@ -80,30 +80,45 @@ export default {
             //     },
             // });
             map.U.hoverPointer('points-pins');
-            map.on('click', 'points-pins', e => {
-                console.log(e.features[0]);
-                EventBus.$emit('select-feature', e.features[0]);
-                if (selected) {
-                    map.setFeatureState(selected, { selected: false });
+            map.U.clickOneLayer(
+                ['points-pins'],
+                e => {
+                    console.log(e.features[0]);
+                    EventBus.$emit('select-feature', e.features[0]);
+                    if (selected) {
+                        map.setFeatureState(selected, { selected: false });
+                    }
+                    this.selectedId = e.features[0].id;
+                    selected = { source: 'points', id: e.features[0].id };
+                    map.setFeatureState(selected, { selected: true });
+                    this.$nextTick(() =>
+                        map.U.setLayerStyle('points-pins', this.iconStyle)
+                    );
+                },
+                e => {
+                    if (selected) {
+                        map.setFeatureState(selected, { selected: false });
+                    }
+                    this.selectedID = null;
+                    EventBus.$emit('select-feature', null);
                 }
-                this.selectedId = e.features[0].id;
-                selected = { source: 'points', id: e.features[0].id };
-                map.setFeatureState(selected, { selected: true });
-                this.$nextTick(() =>
-                    map.U.setLayerStyle('points-pins', this.iconStyle)
-                );
-            });
+            );
             map.U.hoverPopup(
                 'points-pins',
                 f =>
-                    `<h3>${f.properties.Categorie}</h3> ${f.properties.Description}</h3>`
+                    `<h3>${f.properties.Categorie}</h3> ${
+                        f.properties.Description
+                    }</h3>`
             );
         });
         EventBus.$on('filter-change', categories => {
             const filter = [
                 'any',
-                ...categories.map(c =>
-                    c.state ? ['==', ['get', 'Categorie'], c.category] : false
+                ...categories.map(
+                    c =>
+                        c.state
+                            ? ['==', ['get', 'Categorie'], c.category]
+                            : false
                 ),
             ];
             console.log(JSON.stringify(filter, 2));
@@ -152,4 +167,5 @@ export default {
 import 'mapbox-gl/dist/mapbox-gl.css';
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

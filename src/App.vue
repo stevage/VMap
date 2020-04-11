@@ -3,18 +3,27 @@
         //- #top.bb.b--gray.bg-washed-yellow
         //-     h1 Carte d’entraide & de soutien aux soignants Covid-19
         #middle.flex.flex-auto
-            #sidebar.br.b--light-gray.overflow-auto.pa2-ns(:class="{ collapsed: !sidebarOpen}")
-                .container.br.bg-white.b--light-gray.overflow-auto.pa2.bw2
-
-                    //- .b.i See the README for tips on customising.              
-                    h3 Carte d’entraide & de soutien aux soignants Covid-19
+            #sidebar.br.b--light-gray.overflow-auto.ph2-ns(:class="{ collapsed: !sidebarOpen}")
+                .container.br.bg-white.b--light-gray.overflow-auto.ph2.bw2
+                    div
+                        img.pb3(src="Picto Logo Entraide soignants-72dpi.png" style="width:70px; margin-right:-5px; margin-left:-10px").fl
+                        h3.f3(style="color:hsl(220,80%,50%)")
+                            | Entraide & soutien aux soignants
+                            br
+                            .f7.ttu.mt2 COVID-19 en Polynésie
+                    div.cb
                     CategoryFilter.mb4
                     FeatureInfo
                     div.tc
                         .dib.ba.b--dark-blue.dim.pointer.pa3.bg-blue.white.br1(@click="sidebarOpen=false") Voir la carte
 
                     p Ajoute tes souhaits ou tes propositions d’aides via le formulaire en ligne <a href="https://framaforms.org/entraide-soutien-aux-soignants-covid-19-1585006214">ici</a>.
-                    
+                    p.f7 Cette carte est perfectible, n'hésitez pas à <a href="urgence.corona@avoscartes.pf">nous communiquer vos suggestions</a>!
+                    p.f7 Les données et la localisation affichées sont en accord avec la protection de la vie privée, voir <a href="https://www.avoscartes.pf/entraide-soignants-polynesie" target="_blank">FAQ</a> : pas d'information de contact sans accord explicite et une localisation grossière (à l'échelle du quartier ou de la commune) pour les particuliers.
+                    br
+                    p
+                        a(target="_blank" href="https://www.avoscartes.pf/entraide-soignants-polynesie") Plus d'informations
+
             #sidebar-rim.relative.br.b--gray.bw2(v-show="!sidebarOpen"  style="width:20px" @click="sidebarOpen = true")
             #map-container.relative.flex-auto
                 Map

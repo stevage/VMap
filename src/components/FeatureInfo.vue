@@ -4,14 +4,17 @@ div(v-if="p" :class="{[p.Type]: true}").ba.bw2.br4.b--light-gray.pa2.mb5
     h1.f3 {{ p.Identification }}
     div
         .dib.b.ba.br4.b--light-blue.pa2 {{ p.Categorie }}
-    p {{ p.Description }}
+    p.f6( v-html="p.Description.replace(/$/gm, '<br>')")
+
     table
         tr(v-if="p.Conditions.trim()")
-            th Conditions
-            td {{ p.Conditions }}
+            th.pa0.tl(colspan="2") Conditions
+        tr(v-if="p.Conditions.trim()")
+            td.f6(colspan="2" v-html="p.Conditions.replace(/$/gm, '<br>')")
+        tr(v-if="p.Commentaires.trim()")
+            th.pa0.tl(colspan="2") Commentaires
         tr.i(v-if="p.Commentaires.trim()")
-            th Commentaires
-            td {{ p.Commentaires }}
+            td.f6(colspan="2") {{ p.Commentaires }}
         tr(v-if="p.Date.trim()")
             th Date
             td {{ p.Date }}
@@ -67,7 +70,6 @@ export default {
     width: 100%;
 }
 th {
-    text-align: right;
     vertical-align: top;
     padding: 5px;
 }
