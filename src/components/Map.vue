@@ -83,7 +83,6 @@ export default {
             map.U.clickOneLayer(
                 ['points-pins'],
                 e => {
-                    console.log(e.features[0]);
                     EventBus.$emit('select-feature', e.features[0]);
                     if (selected) {
                         map.setFeatureState(selected, { selected: false });
@@ -112,15 +111,16 @@ export default {
             );
         });
         EventBus.$on('filter-change', categories => {
-            const filter = [
-                'any',
-                ...categories.map(
-                    c =>
-                        c.state
-                            ? ['==', ['get', 'Categorie'], c.category]
-                            : false
-                ),
-            ];
+          const filter = ['any']
+          for (let c of categories) {
+            if (c.state) {
+              for (let sb of c.subCategories) {
+                if (sb.state) filter.push(['==', ['get', `Sous catégorie, ${c.category.toLowerCase()}`], sb.name])
+              }
+            } else {
+              filter.push(false)
+            }
+          }
             console.log(JSON.stringify(filter, 2));
             map.U.setFilter('points-pins', filter);
         });
