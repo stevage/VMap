@@ -25,15 +25,31 @@ export default {
                 category: 'Je cherche',
                 subCategories: [
                   {
-                    name : 'Autres,',
-                    state: true
-                  },
-                  {
-                    name : 'Logement,',
-                    state: true
-                  },
-                  {
                     name : 'Matériel médical,',
+                    state: true
+                  },
+                  {
+                    name : 'Aide pour les courses,',
+                    state: true
+                  },
+                  {
+                    name : "Garde d'enfants,",
+                    state: true
+                  },
+                  {
+                    name : "Aide pour les matahiapo,",
+                    state: true
+                  },
+                  {
+                    name : "Logement,",
+                    state: true
+                  },
+                  {
+                    name : "Linge propre,",
+                    state: true
+                  },
+                  {
+                    name : "Autres,",
                     state: true
                   }
                 ],
@@ -44,7 +60,7 @@ export default {
                 category: 'Je propose',
                 subCategories: [
                   {
-                    name : 'Autres,',
+                    name : 'Matériel médical,',
                     state: true
                   },
                   {
@@ -52,11 +68,7 @@ export default {
                     state: true
                   },
                   {
-                    name : "Garde d'enfants,",
-                    state: true
-                  },
-                  {
-                    name : 'Linge propre,',
+                    name : "Caisse prioritaire,",
                     state: true
                   },
                   {
@@ -68,11 +80,23 @@ export default {
                     state: true
                   },
                   {
+                    name : 'Garde d’enfants,',
+                    state: true
+                  },
+                  {
+                    name : 'Aide pour les matahiapos,',
+                    state: true
+                  },
+                  {
                     name : 'Logement,',
                     state: true
                   },
                   {
-                    name : 'Matériel médical,',
+                    name : 'Linge propre,',
+                    state: true
+                  },
+                  {
+                    name : 'Autres,',
                     state: true
                   }
               ],
