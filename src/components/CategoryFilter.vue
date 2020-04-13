@@ -19,34 +19,34 @@ export default {
             {
                 category: 'Je cherche',
                 subCategories: [
-                  {
-                    name : 'Matériel médical,',
-                    state: true
-                  },
-                  {
-                    name : 'Aide pour les courses,',
-                    state: true
-                  },
-                  {
-                    name : "Garde d'enfants,",
-                    state: true
-                  },
-                  {
-                    name : "Aide pour les matahiapo,",
-                    state: true
-                  },
-                  {
-                    name : "Logement,",
-                    state: true
-                  },
-                  {
-                    name : "Linge propre,",
-                    state: true
-                  },
-                  {
-                    name : "Autres,",
-                    state: true
-                  }
+                    {
+                        name: 'Matériel médical,',
+                        state: true,
+                    },
+                    {
+                        name: 'Aide pour les courses,',
+                        state: true,
+                    },
+                    {
+                        name: "Garde d'enfants,",
+                        state: true,
+                    },
+                    {
+                        name: 'Aide pour les matahiapo,',
+                        state: true,
+                    },
+                    {
+                        name: 'Logement,',
+                        state: true,
+                    },
+                    {
+                        name: 'Linge propre,',
+                        state: true,
+                    },
+                    {
+                        name: 'Autres,',
+                        state: true,
+                    },
                 ],
                 state: true,
                 icon: 'demand-marker.png',
@@ -54,47 +54,47 @@ export default {
             {
                 category: 'Je propose',
                 subCategories: [
-                  {
-                    name : 'Matériel médical,',
-                    state: true
-                  },
-                  {
-                    name : 'Faire des courses,',
-                    state: true
-                  },
-                  {
-                    name : "Caisse prioritaire,",
-                    state: true
-                  },
-                  {
-                    name : 'Livraison de nourriture,',
-                    state: true
-                  },
-                  {
-                    name : 'Livraison,',
-                    state: true
-                  },
-                  {
-                    name : 'Garde d’enfants,',
-                    state: true
-                  },
-                  {
-                    name : 'Aide pour les matahiapos,',
-                    state: true
-                  },
-                  {
-                    name : 'Logement,',
-                    state: true
-                  },
-                  {
-                    name : 'Linge propre,',
-                    state: true
-                  },
-                  {
-                    name : 'Autres,',
-                    state: true
-                  }
-              ],
+                    {
+                        name: 'Matériel médical,',
+                        state: true,
+                    },
+                    {
+                        name: 'Faire des courses,',
+                        state: true,
+                    },
+                    {
+                        name: 'Caisse prioritaire,',
+                        state: true,
+                    },
+                    {
+                        name: 'Livraison de nourriture,',
+                        state: true,
+                    },
+                    {
+                        name: 'Livraison,',
+                        state: true,
+                    },
+                    {
+                        name: 'Garde d’enfants,',
+                        state: true,
+                    },
+                    {
+                        name: 'Aide pour les matahiapos,',
+                        state: true,
+                    },
+                    {
+                        name: 'Logement,',
+                        state: true,
+                    },
+                    {
+                        name: 'Linge propre,',
+                        state: true,
+                    },
+                    {
+                        name: 'Autres,',
+                        state: true,
+                    },
+                ],
                 state: true,
                 icon: 'offer-marker.png',
             },
@@ -107,35 +107,35 @@ export default {
         filterChange() {
             EventBus.$emit('filter-change', this.categories);
         },
-        setCategories(s, cat){
-          for (let c of this.categories) {
-            if (c.category == cat.category) {
-              if (s.state) c.state = true
+        setCategories(s, cat) {
+            for (let c of this.categories) {
+                if (c.category == cat.category) {
+                    if (s.state) c.state = true;
+                }
             }
-          }
-          this.filterChange()
+            this.filterChange();
         },
-        setSubCategories(cat){
-          for (let c of this.categories) {
-            if (c.category == cat.category) {
-              for (let sb of c.subCategories) {
-                sb.state = cat.state
-              }
+        setSubCategories(cat) {
+            for (let c of this.categories) {
+                if (c.category == cat.category) {
+                    for (let sb of c.subCategories) {
+                        sb.state = cat.state;
+                    }
+                }
             }
-          }
-          this.filterChange()
-        }
+            this.filterChange();
+        },
     },
 };
 </script>
 
 <style scoped>
-.headBox{
-  margin-left: 5px;
-  margin-right: 5px;
+.headBox {
+    margin-left: 5px;
+    margin-right: 5px;
 }
-.subBox{
-  margin-left: 30px;
-  margin-right: 5px;
+.subBox {
+    margin-left: 30px;
+    margin-right: 5px;
 }
 </style>
