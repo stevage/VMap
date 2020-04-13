@@ -1,18 +1,13 @@
-<template lang="html">
-    <div class="">
-      <h4>Montrer:</h4>
-      <div v-for="c in categories">
-        <img :src="c.icon" class="w1 v-mid">
-        <input type="checkbox" v-model="c.state" @change="(setSubCategories(c))" class="headBox">
-        <span>{{c.category}}</span>
-        <div v-for="s in c.subCategories">
-          <div>
-            <input type="checkbox" v-model="s.state" :name="s.name" @change="(setCategories(s,c))" class="subBox">
-            <label :for="s.name">{{s.name.slice(0, -1)}}</label>
-          </div>
-        </div>
-      </div>
-    </div>
+<template lang="pug">
+    div
+        h4 Montrer:
+        div(v-for="c in categories")
+            img(:src="c.icon" class="w1 v-mid")
+            input(type="checkbox" v-model="c.state" @change="setSubCategories(c)" class="headBox")
+            span {{c.category}}
+            div(v-for="s in c.subCategories")
+                input(type="checkbox" v-model="s.state" :name="s.name" @change="(setCategories(s,c))" class="subBox")
+                label(:for="s.name") {{s.name.slice(0, -1)}}
 </template>
 
 <script>
